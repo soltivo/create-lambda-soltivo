@@ -1,0 +1,16 @@
+{
+  "name": "create-lambda-soltivo",
+  "version": "1.0.0",
+  "description": "Create a boilerplate for your lambda function",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamin Filiatrault",
+  "license": "MIT",
+  "file": [
+    "bin/",
+    "src/",
+    "templates/"
+  ]
+}

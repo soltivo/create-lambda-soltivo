@@ -7,11 +7,8 @@
     "@soltivo/create-lambda": "bin/create-lambda",
     "create-lambda": "bin/create-lambda"
   },
-  "publishConfig": {
-    "access": "public"
-  },
+  "repository": "https://github.com/soltivo/create-lambda-soltivo",
   "keywords": [
-    "cli",
     "create-lambda"
   ],
   "author": "Benjamin Filiatrault",

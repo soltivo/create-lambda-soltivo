@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "module": "commonjs",
-        "outDir": "hanlders",
-        "target": "ES2015",
+        "outDir": "./tests",
+        "target": "ES2017",
         "allowJs": false,
         "allowSyntheticDefaultImports": true,
         "moduleResolution": "node",
@@ -12,5 +12,7 @@
         "strictNullChecks": false,
         "resolveJsonModule": true,
         "preserveConstEnums": true
-    }
+    },
+    "include": ["src/tests/*"],
+    "exclude": ["src/handlers/*", "src/utils/*"]
 }

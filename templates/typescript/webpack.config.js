@@ -9,7 +9,12 @@ module.exports = {
     mode: 'development',
 
     // Lambdas already contains the aws-sdk we don't need to include it
-    externals: [{ 'aws-sdk': 'commonjs aws-sdk' }],
+    externals: [
+        // We excludes imports like
+        // aws-sdk
+        // aws-sdk/clients/...
+        /^aws-sdk(\/clients\/.*)?$/i,
+    ],
 
     // All the entry point (Could be a function that return all the folder if your folder have an index 😉)
     entry: ()=> {

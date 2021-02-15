@@ -5,7 +5,7 @@ First, install the package as global using this command in your shell:
 npm install -g create-lambda-soltivo
 ```
 
-Finally, load the boilerplate using this command in your favorite sheel:
+Finally, load the boilerplate using this command in your favorite shell:
 ```bash
 create-lambda FOLDERNAME
 ```

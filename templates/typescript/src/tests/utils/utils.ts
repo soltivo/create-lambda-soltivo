@@ -14,9 +14,9 @@ export const headers = {
     'Content-Type': 'application/json',
 };
 
-export const insert = async () => {
+export const insertEvent = async () => {
     const params = {
-        TableName: 'local-Master', //👈 Cannot use process.env.TABLE_NAME because the npm test doesn't set node process variables
+        TableName: 'TABLE_NAME', //👈 Cannot use process.env.TABLE_NAME because the npm test doesn't set node process variables
         Item: {
             // Put your attributes here to insert an object for your GET test cases use the orgid 123
         },

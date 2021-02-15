@@ -1,35 +1,52 @@
 {
-    "name": "CHANGE-service",
-    "description": "YOUR DESCRIPTION",
+    "name": "SERVICE_NAME-service",
+    "description": "SERVICE DESCRIPTION HERE",
     "version": "1.0.0",
-    "author": "YOUR NAME",
+    "author": "YOUR NAME HERE",
     "private": true,
     "dependencies": {
         "aws-sdk": "^2.792.0",
+        "axios": "^0.21.0",
         "jsonschema": "^1.4.0",
         "uuid": "^8.3.1"
     },
     "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/preset-env": "^7.12.11",
+        "@babel/preset-typescript": "^7.12.7",
         "@types/aws-lambda": "^8.10.51",
         "@types/chai-like": "^1.1.0",
         "@types/chai-things": "0.0.34",
         "@types/dotenv": "^8.2.0",
+        "@types/jsonschema": "^1.1.1",
         "@types/mocha": "^8.0.4",
         "@types/node": "^13.13.5",
         "@types/uuid": "^8.3.0",
+        "aws-lambda": "^1.0.6",
+        "babel-loader": "^8.2.2",
         "chai": "^4.2.0",
         "chai-factories": "^0.1.0",
         "chai-http": "^4.3.0",
         "chai-like": "^1.1.1",
         "chai-things": "^0.2.0",
+        "clean-webpack-plugin": "^3.0.0",
         "mocha": "^8.2.1",
-        "typescript": "^3.8.3"
+        "ts-loader": "^8.0.13",
+        "typescript": "^3.8.3",
+        "url-loader": "^4.1.1",
+        "webpack": "^5.11.1",
+        "webpack-cli": "^4.3.1"
     },
     "scripts": {
-        "compile": "tsc",
-        "test": "mocha src/tests --recursive",
-        "localDB": "docker run -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb -inMemory",
-        "localServer": "sam.cmd build & sam.cmd local start-api --skip-pull-image --docker-network host",
-        "deployAWS": "sam.cmd build & sam.cmd deploy --no-confirm-changeset --parameter-overrides environment=testing --tags createdBy='Benjamin'"
+        "build": "webpack --watch",
+        "build:prod": "webpack --mode production",
+        "build:tests": "tsc --project tsconfig-test.json",
+        "start": "sam local start-api --warm-containers EAGER --skip-pull-image",
+        "start:action": "sam local start-api --skip-pull-image",
+        "start:db": "docker run -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb -inMemory",
+        "test": "tsc --project tsconfig-test.json && mocha ./tests --recursive --exit",
+        "deploy": "webpack --mode production && sam deploy --no-confirm-changeset --parameter-overrides environment=testing --tags createdBy='Benjamin'",
+        "deploy:prod": "webpack --mode production && sam deploy --no-confirm-changeset --parameter-overrides environment=prod --tags createdBy='Benjamin'"
     }
 }
+ 

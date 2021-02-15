@@ -2,7 +2,7 @@ import * as AWS from 'aws-sdk';
 import { MASTER_DEFINITION } from './databaseDefinition';
 
 const DB = new AWS.DynamoDB({
-    endpoint: 'http://localhost:8000', //👈 Cannot use process.env.DYNAMO_DB_ENDPOINT because the npm test doesn't set node process variables 
+    endpoint: 'http://localhost:8000',
     region: 'local',
 });
 

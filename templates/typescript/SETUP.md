@@ -13,46 +13,43 @@ Make sure to have those installed on your computer
 
 2. Go to template.yml and copy the snippet provided
 
-1. Go to `src-ts\tests\utils\databaseDefinition.ts` and copy the snippet provided
+1. Go to `src\tests\utils\databaseDefinition.ts` and copy the snippet provided
 
-2. Go to `src-ts\utils\filter.ts` and copy the snippet provided
+2. Go to `src\utils\filter.ts` and copy the snippet provided
 
-3. Go to  `src-ts\utils\database.ts` there, you can add some obejcts for secondary indexes and data prefixes
+3. Go to  `src\utils\database.ts` there, you can add some obejcts for secondary indexes and data prefixes
 
-4. Create your first handler in `src-ts\handlers` as follow --> {actionName}{ServiceName}.ts --> createService.ts
+4. Create your first handler in `src\handlers` as follow --> {actionName}{ServiceName}.ts --> createService.ts
 
-5. Add you body validation and other validations in `src-ts\utils\validation.ts`
+5. Add you body validation and other validations in `src\utils\validation.ts`
 
-6. Write your test cases in `src-ts\tests\1-your.tests.ts` you can rename the file and create 1 file per Method
+6. Write your test cases in `src\tests\1-your.tests.ts` you can rename the file and create 1 file per Method
 
 
 # Available commands
 
-Compile your code:
+Compile your code & watch it:
 ```bash
-npm run compile
+npm run build
 ```
 
 Run your DynamoDB locally
 ```bash
-npm run localDB
+npm run start:db
 ```
 
-Build & Run your lambda locally:
+Run your lambda locally:
 ```bash
-npm run localServer
+npm start
 ```
 
 Test your code:
 ```bash
-npm run test
+npm test
 ```
 
-Build & Deploy your lambda in the testing env:
-```bash
-npm run deployAWS
-```
 
 > **Important** make sure to update the template.yml before running your code locally or trying to deploy to the test environment.
+> You don't need to deploy your code, the pipeline does it for you
 
 

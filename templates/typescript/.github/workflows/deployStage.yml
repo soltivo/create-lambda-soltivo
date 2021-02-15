@@ -1,0 +1,31 @@
+name: deployStaging
+on:
+    push:
+        branches:
+            - develop
+jobs:
+    tests:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Setup DynamoDB Local
+              uses: rrainn/dynamodb-action@v2.0.0
+              with:
+                  sharedDb: true
+                  port: 8000
+                  cors: '*'
+            - uses: actions/checkout@v2
+            - run: aws configure set aws_access_key_id fakeMyKeyId
+            - run: aws configure set aws_secret_access_key fakeSecretAccessKey
+            - run: npm i
+            - run: npm run build:prod
+            - run: npm run start:action &
+            - run: npm test
+    deploy:
+        needs: tests
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID_STAGE }}
+            - run: aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY_STAGE }}
+            - run: npm i
+            - run: npm run deploy

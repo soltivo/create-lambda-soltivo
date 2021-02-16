@@ -6,11 +6,12 @@ const DB = new AWS.DynamoDB({
     region: 'local',
 });
 
-export const createDb = async () => {
+export const createTables = async () => {
     try {
         await DB.createTable(MASTER_DEFINITION).promise();
         return Promise.resolve();
     } catch (error) {
+        console.log('Table creation failed', error);
         return Promise.reject(error);
     }
 };

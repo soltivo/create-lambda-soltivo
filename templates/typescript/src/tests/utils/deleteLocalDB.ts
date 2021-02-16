@@ -11,10 +11,15 @@ const params = {
 export const deleteTables = async () => {
     try {
         await dynamoDB.deleteTable(params).promise();
-        console.log('Table deleted');
         return Promise.resolve();
     } catch (error) {
-        console.log('Table deletion failed', error);
-        return Promise.reject(error);
+        if(error.code == 'ResourceNotFoundException') {
+            // If the table did not exists, it is a good behavior.
+            //console.log('Cant delete a non existing table.');
+            return Promise.resolve();
+        } else {
+            console.log('Table deletion failed', error);
+            return Promise.reject(error);
+        }
     }
 };

@@ -2,6 +2,9 @@ import * as AWS from 'aws-sdk';
 import { getDynamoDBDocumentClient } from '../../utils/utils';
 import { Response } from 'superagent';
 
+import * as chai from 'chai';
+const expect = chai.expect;
+
 AWS.config.update({
     region: 'local',
 });

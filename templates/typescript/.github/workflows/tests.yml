@@ -11,9 +11,11 @@ jobs:
                   port: 8000
                   cors: '*'
             - uses: actions/checkout@v2
+            - run: sam --version
             - run: aws configure set aws_access_key_id fakeMyKeyId
             - run: aws configure set aws_secret_access_key fakeSecretAccessKey
             - run: npm i
             - run: npm run build:prod
             - run: npm run start:action &
+            - run: sleep 20
             - run: npm test

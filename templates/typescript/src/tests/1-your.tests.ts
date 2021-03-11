@@ -9,7 +9,6 @@ const server = 'http://localhost:3000';
  *   API test cases
  */
 describe('Create something test cases', function () {
-    this.timeout(10000); // The describe max execution time is 10 sec
 
     it('should fail the body is empty', async () => {
         const response = await chai.request(server).post('/PATH').set(headers).send();

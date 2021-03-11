@@ -20,8 +20,9 @@
         "@types/mocha": "^8.0.4",
         "@types/node": "^13.13.5",
         "@types/uuid": "^8.3.0",
-        "aws-sdk": "^2.792.0",
         "aws-lambda": "^1.0.6",
+        "aws-sdk": "^2.792.0",
+        "aws-sdk-mock": "^5.1.0",
         "babel-loader": "^8.2.2",
         "chai": "^4.2.0",
         "chai-http": "^4.3.0",
@@ -36,14 +37,13 @@
     },
     "scripts": {
         "build": "webpack --watch",
-        "build:prod": "webpack --mode production",
+        "build:workflow": "webpack",
         "build:tests": "tsc --project tsconfig-test.json",
         "start": "sam local start-api --warm-containers EAGER --skip-pull-image",
-        "start:action": "sam local start-api --skip-pull-image",
+        "start:workflow": "sam local start-api --skip-pull-image",
         "start:db": "docker run -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb -inMemory",
         "test": "tsc --project tsconfig-test.json && mocha ./tests --recursive --exit",
         "deploy": "webpack --mode production && sam deploy --no-confirm-changeset --parameter-overrides environment=testing --tags createdBy='Benjamin'",
         "deploy:prod": "webpack --mode production && sam deploy --no-confirm-changeset --parameter-overrides environment=prod --tags createdBy='Benjamin'"
     }
 }
- 

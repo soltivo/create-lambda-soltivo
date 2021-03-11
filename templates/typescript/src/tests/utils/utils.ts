@@ -1,21 +1,30 @@
-import * as AWS from 'aws-sdk';
-import { getDynamoDBDocumentClient } from '../../utils/utils';
-import { Response } from 'superagent';
+import * as AWS from "aws-sdk";
+import { getDynamoDBDocumentClient } from "../../utils/utils";
+import { Response } from "superagent";
+import { MASTER } from "../../utils/database";
 
-import * as chai from 'chai';
+import * as chai from "chai";
 const expect = chai.expect;
 
+// Set up local credentials to avoid depending on OS configuration
 AWS.config.update({
-    region: 'local',
+  region: "local",
+  accessKeyId: "AKID",
+  secretAccessKey: "SECRET",
 });
 
 const documentClient = getDynamoDBDocumentClient();
 
+const testOrgId = "123";
+const testUserId = "123";
+
 export const headers = {
-    orgid: '123',
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
+  orgid: testOrgId,
+  userId: testUserId,
+  Accept: "application/json",
+  "Content-Type": "application/json",
 };
+
 
 export const insertEvent = async () => {
     const params = {
